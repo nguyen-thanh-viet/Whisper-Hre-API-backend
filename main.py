@@ -16,6 +16,10 @@ app.add_middleware(
 
 client = Client("ntviet/whisper-small-hre5.2")
 
+@app.get("/")
+def home():
+    return {"message": "API is running"}
+
 @app.post("/transcribe/")
 async def transcribe(file: UploadFile):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
