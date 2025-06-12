@@ -8,9 +8,8 @@ app = FastAPI()
 # Cấu hình CORS để frontend có thể gọi
 app.add_middleware(
     CORSMiddleware,
-    # allow_origins=["*"],      # hoặc thay * bằng domain frontend cụ thể
-    allow_origin_regex=".*",    # Cho phép tất cả domain
-    allow_credentials=True,
+    allow_origins=["*"],      # hoặc thay * bằng domain frontend cụ thể
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
