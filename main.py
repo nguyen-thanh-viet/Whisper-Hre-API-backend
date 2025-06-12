@@ -26,5 +26,5 @@ async def transcribe(file: UploadFile):
         tmp.write(await file.read())
         tmp_path = tmp.name
 
-    result = client.predict(tmp_path, api_name="/predict")
+    result = client.predict(tmp_path)
     return {"transcription": result}
