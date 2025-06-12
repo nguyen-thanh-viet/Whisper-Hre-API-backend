@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from gradio_client import Client
 import tempfile
+from gradio_client import file
 
 app = FastAPI()
 
@@ -26,5 +27,7 @@ async def transcribe(file: UploadFile):
         tmp.write(await file.read())
         tmp_path = tmp.name
 
-    result = client.predict(tmp_path)
+    # result = client.predict(tmp_path)
+    # Sử dụng gradio_client.file để tạo đúng metadata
+    result = client.predict(file(tmp_path))
     return {"transcription": result}
